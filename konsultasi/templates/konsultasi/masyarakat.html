@@ -1,0 +1,61 @@
+{% include 'navbar.html' %}
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Layanan Konsultasi Keagamaan Masyarakat Probolinggo</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              
+            </ol>
+          </div>
+
+          
+          <div class="row">
+            <!-- Datatables -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h4 class="m-1 font-weight-bold text-primary">Tabel Data Masyarakat</h4>
+                </div>
+            
+                <div align="right">
+                  <a class="btn btn-primary" href="{% url 'createmasyarakat' %}">Tambah Masyarakat</a> 
+                </div><hr>
+                <div class="table-responsive p-3">
+                  <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                        <tr>
+                          <th>No</th>
+                          <th>ID Pengguna</th>
+                          <th>Nama</th>
+                          <th>Jenis Kelamin</th>
+                          <th>Alamat</th>
+                          <th>Email</th>
+                          <th>Username</th>
+                          <th>Password</th>
+                          <th>Tanggal</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                        </tr>
+                        </thead>
+                            {% for datamasyarakat in Masyarakat %}
+                            
+                            <tr>
+                              <td>{{forloop.counter}}</td>
+                              <td>{{ datamasyarakat.id_pengguna }}</td>
+                              <td>{{ datamasyarakat.nama_lengkap }}</td>
+                              <td>{{ datamasyarakat.Jenis_kelamin }}</td>
+                              <td>{{ datamasyarakat.alamat }}</td>
+                              <td>{{ datamasyarakat.email }}</td>
+                              <td>{{ datamasyarakat.username }}</td>
+                              <td>{{ datamasyarakat.password  }}</td>
+                              <td>{{ datamasyarakat.date_created|date:"l, d N Y" }}
+                                  {{ datamasyarakat.date_created|time:"H:i:s" }}</td>
+                            <th><a href="{% url 'updatemasyarakat' datamasyarakat.id %}" class="btn btn-success">Update</a></th>
+                            <th><a href="{% url 'deletemasyarakat' datamasyarakat.id %}" class="btn btn-danger">Delete</a></th>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                </div>
+              </div>
+            </div>
+{% include 'base.html' %}

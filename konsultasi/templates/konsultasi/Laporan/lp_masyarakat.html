@@ -1,0 +1,37 @@
+<div align="center" style="background-color: #cdcdcd">
+    <div style="width: 1200px; background-color: #FFF">
+      <h2 align="center">(PCNU) NAHDLATUL ULAMA<BR>KB.PROBOLINGGO</h2>
+        <h3 align="center">LAPORAN DATA MASYARAKAT</h3>
+<table width="100%" border="1">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>No</th>
+                          <th>ID Pengguna</th>
+                          <th>Nama</th>
+                          <th>Jenis Kelamin</th>
+                          <th>Alamat</th>
+                          <th>Email</th>
+                          <th>Username</th>
+                          <th>Password</th>
+                          <th>Tanggal</th>
+                        </tr>
+                             {% for datamasyarakat in LP_MS %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{ datamasyarakat.id_pengguna }}</td>
+                              <td>{{ datamasyarakat.nama_lengkap }}</td>
+                              <td>{{ datamasyarakat.Jenis_kelamin }}</td>
+                              <td>{{ datamasyarakat.alamat }}</td>
+                              <td>{{ datamasyarakat.email }}</td>
+                              <td>{{ datamasyarakat.username }}</td>
+                              <td>{{ datamasyarakat.password  }}</td>
+                              <td>{{ datamasyarakat.date_created|date:"l, d N Y" }}
+                                  {{ datamasyarakat.date_created|time:"H:i:s" }}</td>
+                        </tr>
+                            {% endfor %}
+                            
+                          
+                  </table>
+              
+          </div></div>
+          <script type="text/javascript">print();</script>
